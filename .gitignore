@@ -12,3 +12,4 @@ mlruns/
 
 # Las evidencias en CSV sí se versionan (no son datos del dataset)
 !evidencias/*.csv
+!evidencias/**/*.csv
