@@ -17,7 +17,6 @@ from modeling import CATEGORICAL, build_pipeline, classification_metrics  # noqa
 DATA = yaml.safe_load(Path("configs/data.yaml").read_text())
 EXP = yaml.safe_load(Path("configs/experiments.yaml").read_text())
 MLFLOW_URI = "sqlite:///mlflow.db"
-EXPERIMENT_NAME = "unsw-nb15-defiende-el-servidor"
 NON_FEATURES = ["row_id", "group_id", "attack_cat", DATA["target"]]
 
 
@@ -41,7 +40,7 @@ def main():
     feats = [c for c in train.columns if c not in NON_FEATURES]
 
     mlflow.set_tracking_uri(MLFLOW_URI)
-    mlflow.set_experiment(EXPERIMENT_NAME)
+    mlflow.set_experiment(EXP["mlflow_experiment"])
     for e in EXP["experiments"]:
         used = [c for c in feats if c not in e["drop_features"]]
         numeric = [c for c in used if c not in CATEGORICAL]

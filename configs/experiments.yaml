@@ -1,46 +1,42 @@
-# Cuatro+ configuraciones, dos familias (regresión logística y bosques aleatorios).
+# Cuatro configuraciones: un piso (Dummy) y tres modelos de tres familias (lineal, boosting, bosque).
 # Las hipótesis se escriben ANTES de entrenar. Mismas particiones (configs/data.yaml, semilla 42).
 # Umbral de referencia para comparar experimentos: 0.5 (el umbral final se elige después, solo con validación).
+# Nota de honestidad: una primera ronda (experimento MLflow "unsw-nb15-defiende-el-servidor", descartada) ya usó
+# regresión logística y un random forest sobre estas mismas particiones; esa experiencia informa las hipótesis E1 y E3.
+mlflow_experiment: unsw-nb15-modelos
 seed: 42
 threshold: 0.5
 experiments:
-  - id: E0_lr_base
+  - id: E0_dummy
+    family: baseline
+    change: Piso de comparación. DummyClassifier (strategy=prior) ignora las variables y predice la frecuencia de clase.
+    hypothesis: >
+      Predice siempre ataque (68 % de las filas son ataque), así que tendrá recall 1.0 y FPR 1.0 con una accuracy
+      cercana a 0.68 pero un macro-F1 muy bajo. Sirve para mostrar que la accuracy sola engaña.
+    model: {type: DummyClassifier, params: {strategy: prior}}
+    drop_features: []
+  - id: E1_logreg
     family: logistic_regression
     change: Referencia sencilla. Regresión logística con log1p + estandarización de numéricas y one-hot de categóricas.
     hypothesis: >
       Un modelo lineal ya separa bien normal de ataque porque variables como sttl y ct_state_ttl son casi
-      deterministas, pero su frontera lineal dejará errores en las familias de ataque que se parecen al tráfico normal.
+      deterministas, pero su frontera lineal dejará muchas falsas alarmas (FPR por encima de 0.10) frente a los modelos de árboles.
     model: {type: LogisticRegression, params: {C: 1.0, max_iter: 2000}}
     drop_features: []
-  - id: E1_lr_balanced
-    family: logistic_regression
-    change: Solo cambia class_weight a "balanced" respecto a E0.
+  - id: E2_hgb
+    family: gradient_boosting
+    change: Cambia de familia respecto a E1. HistGradientBoosting (max_iter=200, early stopping interno solo con train).
     hypothesis: >
-      Equilibrar las clases subirá el recall de ataque y también la tasa de falsos positivos (se acepta más falsa alarma
-      por detectar más ataques). El macro-F1 cambiará poco porque el desbalance es moderado (32 % normal / 68 % ataque).
-    model: {type: LogisticRegression, params: {C: 1.0, max_iter: 2000, class_weight: balanced}}
+      El boosting captura relaciones no lineales y no sufre por las colas pesadas, así que tendrá el mejor macro-F1
+      de los cuatro y una FPR menor que la regresión logística, con un modelo guardado de pocos MB.
+    model: {type: HistGradientBoostingClassifier, params: {max_iter: 200}}
     drop_features: []
-  - id: E2_rf_200
+  - id: E3_rf
     family: random_forest
-    change: Cambia de familia respecto a E0. Bosque aleatorio de 200 árboles sin límite de profundidad.
+    change: Cambia de familia respecto a E1. Random forest de 100 árboles con min_samples_leaf=5 para limitar el tamaño.
     hypothesis: >
-      Un modelo de árboles mejorará recall y macro-F1 frente a E0, porque captura relaciones no lineales y no sufre
-      por las colas pesadas de las variables. Más complejidad debería ayudar.
-    model: {type: RandomForestClassifier, params: {n_estimators: 200, n_jobs: -1}}
+      Rendirá cerca del boosting (diferencia de macro-F1 menor de un punto), aunque su modelo guardado será mucho más
+      pesado que el de HistGradientBoosting. En la primera ronda un bosque de 200 árboles sin límite llegó a macro-F1 0.948;
+      limitar las hojas debería costar poco.
+    model: {type: RandomForestClassifier, params: {n_estimators: 100, min_samples_leaf: 5, n_jobs: -1}}
     drop_features: []
-  - id: E3_rf_shallow
-    family: random_forest
-    change: Solo limita la complejidad respecto a E2 (max_depth=6, min_samples_leaf=20).
-    hypothesis: >
-      Un bosque mucho más simple perderá poco (menos de un punto de macro-F1) frente a E2, porque pocas variables
-      casi deterministas hacen la mayor parte del trabajo. Si la pérdida es grande, la complejidad sí aporta.
-    model: {type: RandomForestClassifier, params: {n_estimators: 200, max_depth: 6, min_samples_leaf: 20, n_jobs: -1}}
-    drop_features: []
-  - id: E4_rf_no_ttl
-    family: random_forest
-    change: Igual que E2 pero sin sttl ni ct_state_ttl, las dos variables más ligadas a cómo se montó el laboratorio.
-    hypothesis: >
-      Sin esas variables el rendimiento bajará de forma visible, sobre todo el recall o la tasa de falsos positivos,
-      lo que mostraría cuánto del resultado depende de un rasgo del laboratorio y no del comportamiento del ataque.
-    model: {type: RandomForestClassifier, params: {n_estimators: 200, n_jobs: -1}}
-    drop_features: [sttl, ct_state_ttl]

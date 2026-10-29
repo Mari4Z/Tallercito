@@ -1,26 +1,28 @@
 """Pipeline (preprocesamiento + estimador) y métricas de clasificación binaria."""
 import numpy as np
 from sklearn.compose import ColumnTransformer
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.dummy import DummyClassifier
+from sklearn.ensemble import HistGradientBoostingClassifier, RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import FunctionTransformer, OneHotEncoder, StandardScaler
 
 CATEGORICAL = ["proto", "service", "state"]
-MODELS = {"LogisticRegression": LogisticRegression, "RandomForestClassifier": RandomForestClassifier}
+MODELS = {"DummyClassifier": DummyClassifier, "LogisticRegression": LogisticRegression,
+          "HistGradientBoostingClassifier": HistGradientBoostingClassifier, "RandomForestClassifier": RandomForestClassifier}
 
 
 def build_pipeline(model_type, params, numeric, seed):
     """Todo lo que se aprende (categorías, medias, desviaciones) se ajusta solo con train al llamar fit()."""
-    cat = OneHotEncoder(handle_unknown="ignore")
+    cat = OneHotEncoder(handle_unknown="ignore", sparse_output=False)  # denso: HistGradientBoosting no admite sparse
     if model_type == "LogisticRegression":
         # colas pesadas -> log1p; escalado necesario para el modelo lineal
         num = Pipeline([("log1p", FunctionTransformer(np.log1p, feature_names_out="one-to-one")), ("scale", StandardScaler())])
     else:
         num = "passthrough"  # los árboles no necesitan transformar las numéricas
-    pre = ColumnTransformer([("cat", cat, CATEGORICAL), ("num", num, numeric)])
-    return Pipeline([("pre", pre), ("clf", MODELS[model_type](random_state=seed, **params))])
+    pre = ColumnTransformer([("cat", cat, CATEGORICAL), ("num", num, numeric)], sparse_threshold=0)
+    return Pipeline([("pre", pre), ("clf", MODELS[model_type](**({"random_state": seed} if model_type != "DummyClassifier" else {}), **params))])
 
 
 def safe_div(a, b):

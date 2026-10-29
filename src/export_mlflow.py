@@ -15,7 +15,7 @@ from mlflow.tracking import MlflowClient
 
 mlflow.set_tracking_uri("sqlite:///mlflow.db")
 client = MlflowClient()
-exp = client.get_experiment_by_name("unsw-nb15-defiende-el-servidor")
+exp = client.get_experiment_by_name(yaml.safe_load(Path("configs/experiments.yaml").read_text())["mlflow_experiment"])
 models = {m.source_run_id: m for m in mlflow.search_logged_models(experiment_ids=[exp.experiment_id], output_format="list")}
 CONCL = yaml.safe_load(Path("configs/conclusiones.yaml").read_text())
 OUT = Path("evidencias/mlflow")
