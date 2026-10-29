@@ -1,0 +1,14 @@
+# Configuración de datos y particiones (compartida por todos los experimentos).
+seed: 42
+val_fraction: 0.20          # se usa StratifiedGroupKFold(n_splits=5) y un fold como validación
+raw_dir: data/raw
+prepared_dir: data/prepared
+train_file: UNSW_NB15_training-set.csv
+test_file: UNSW_NB15_testing-set.csv
+target: label                # 0 = normal, 1 = ataque (clase positiva)
+excluded_from_inputs: [id, label, attack_cat]
+# SHA-256 publicados en el anexo del taller (copia espejo de terceros)
+expected_sha256:
+  UNSW_NB15_training-set.csv: bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa
+  UNSW_NB15_testing-set.csv: 734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559
+expected_rows: {UNSW_NB15_training-set.csv: 175341, UNSW_NB15_testing-set.csv: 82332}
