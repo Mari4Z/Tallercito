@@ -1,0 +1,24 @@
+artifact_path: /Users/maria/Documents/code/Tallercito/mlruns/1/models/m-00e79f708a74409ea33d4f5d2b24ef2d/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.14.6
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.1
+    skops_trusted_types:
+    - sklearn.tree._tree.Tree
+mlflow_version: 3.17.2
+model_id: m-00e79f708a74409ea33d4f5d2b24ef2d
+model_size_bytes: 322140
+model_uuid: m-00e79f708a74409ea33d4f5d2b24ef2d
+prompts: null
+run_id: 0d479141d26746759b24dc80f35e3cb1
+utc_time_created: '2026-10-29 19:36:36.369122'

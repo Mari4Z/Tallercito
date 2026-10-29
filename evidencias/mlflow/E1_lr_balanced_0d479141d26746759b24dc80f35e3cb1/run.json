@@ -1,0 +1,56 @@
+{
+  "run_id": "0d479141d26746759b24dc80f35e3cb1",
+  "run_name": "E1_lr_balanced",
+  "status": "FINISHED",
+  "start_time_ms": 1793302593783,
+  "artifact_uri": "/Users/maria/Documents/code/Tallercito/mlruns/1/0d479141d26746759b24dc80f35e3cb1/artifacts",
+  "params": {
+    "model": "LogisticRegression",
+    "clf_C": "1.0",
+    "clf_max_iter": "2000",
+    "clf_class_weight": "balanced",
+    "seed": "42",
+    "split_seed": "42",
+    "n_features": "42",
+    "dropped_features": "none",
+    "train_rows": "140272",
+    "valid_rows": "35069"
+  },
+  "metrics": {
+    "threshold": 0.5,
+    "tp": 22490.0,
+    "fp": 872.0,
+    "tn": 10328.0,
+    "fn": 1379.0,
+    "recall": 0.9422263186559973,
+    "precision": 0.9626744285591987,
+    "fpr": 0.07785714285714286,
+    "f1_attack": 0.9523406237428808,
+    "macro_f1": 0.9270368592150471,
+    "accuracy": 0.9358122558384898,
+    "zero_division": 0.0
+  },
+  "tags": {
+    "mlflow.user": "maria",
+    "mlflow.source.name": "src/run_experiments.py",
+    "mlflow.source.type": "LOCAL",
+    "mlflow.source.git.commit": "393677dafccec7d50775c552e183d23e2d8172a4",
+    "mlflow.source.git.branch": "main",
+    "mlflow.source.git.repoURL": "https://github.com/Mari4Z/Tallercito.git",
+    "mlflow.runName": "E1_lr_balanced",
+    "experiment_id": "E1_lr_balanced",
+    "family": "logistic_regression",
+    "change": "Solo cambia class_weight a \"balanced\" respecto a E0.",
+    "hypothesis": "Equilibrar las clases subirá el recall de ataque y también la tasa de falsos positivos (se acepta más falsa alarma por detectar más ataques). El macro-F1 cambiará poco porque el desbalance es moderado (32 % normal / 68 % ataque).",
+    "git_commit": "393677dafccec7d50775c552e183d23e2d8172a4",
+    "dvc_prepared_md5": "44585757006074b4f38735eed9dd9e08.dir",
+    "dvc_raw_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "git_tag_datos": "data-v1"
+  },
+  "model": {
+    "logged_model_id": "m-00e79f708a74409ea33d4f5d2b24ef2d",
+    "archivo": "model.skops",
+    "bytes": 322140,
+    "sha256": "97446adcb81448ab5c7fb32be3575df79f642ac634ac1fd00185f45d44e67c8d"
+  }
+}

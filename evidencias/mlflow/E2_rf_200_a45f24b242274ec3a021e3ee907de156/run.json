@@ -1,0 +1,55 @@
+{
+  "run_id": "a45f24b242274ec3a021e3ee907de156",
+  "run_name": "E2_rf_200",
+  "status": "FINISHED",
+  "start_time_ms": 1793302598392,
+  "artifact_uri": "/Users/maria/Documents/code/Tallercito/mlruns/1/a45f24b242274ec3a021e3ee907de156/artifacts",
+  "params": {
+    "model": "RandomForestClassifier",
+    "clf_n_estimators": "200",
+    "clf_n_jobs": "-1",
+    "seed": "42",
+    "split_seed": "42",
+    "n_features": "42",
+    "dropped_features": "none",
+    "train_rows": "140272",
+    "valid_rows": "35069"
+  },
+  "metrics": {
+    "threshold": 0.5,
+    "tp": 23298.0,
+    "fp": 995.0,
+    "tn": 10205.0,
+    "fn": 571.0,
+    "recall": 0.9760777577611127,
+    "precision": 0.9590416992549294,
+    "fpr": 0.08883928571428572,
+    "f1_attack": 0.9674847390058553,
+    "macro_f1": 0.9481125915633573,
+    "accuracy": 0.9553451766517437,
+    "zero_division": 0.0
+  },
+  "tags": {
+    "mlflow.user": "maria",
+    "mlflow.source.name": "src/run_experiments.py",
+    "mlflow.source.type": "LOCAL",
+    "mlflow.source.git.commit": "393677dafccec7d50775c552e183d23e2d8172a4",
+    "mlflow.source.git.branch": "main",
+    "mlflow.source.git.repoURL": "https://github.com/Mari4Z/Tallercito.git",
+    "mlflow.runName": "E2_rf_200",
+    "experiment_id": "E2_rf_200",
+    "family": "random_forest",
+    "change": "Cambia de familia respecto a E0. Bosque aleatorio de 200 árboles sin límite de profundidad.",
+    "hypothesis": "Un modelo de árboles mejorará recall y macro-F1 frente a E0, porque captura relaciones no lineales y no sufre por las colas pesadas de las variables. Más complejidad debería ayudar.",
+    "git_commit": "393677dafccec7d50775c552e183d23e2d8172a4",
+    "dvc_prepared_md5": "44585757006074b4f38735eed9dd9e08.dir",
+    "dvc_raw_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "git_tag_datos": "data-v1"
+  },
+  "model": {
+    "logged_model_id": "m-1662050e6b844c0eb0db56867ae5dc1d",
+    "archivo": "model.skops",
+    "bytes": 189406723,
+    "sha256": "1e2112a2e80a1b29d5a54c1bbffd08d6b5ab19e0297fb10958366937e5c5b0f4"
+  }
+}

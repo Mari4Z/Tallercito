@@ -1,0 +1,55 @@
+{
+  "run_id": "dbf50be9f66642cfb41eb4e8fb1bab51",
+  "run_name": "E0_lr_base",
+  "status": "FINISHED",
+  "start_time_ms": 1793302588931,
+  "artifact_uri": "/Users/maria/Documents/code/Tallercito/mlruns/1/dbf50be9f66642cfb41eb4e8fb1bab51/artifacts",
+  "params": {
+    "model": "LogisticRegression",
+    "clf_C": "1.0",
+    "clf_max_iter": "2000",
+    "seed": "42",
+    "split_seed": "42",
+    "n_features": "42",
+    "dropped_features": "none",
+    "train_rows": "140272",
+    "valid_rows": "35069"
+  },
+  "metrics": {
+    "threshold": 0.5,
+    "tp": 23281.0,
+    "fp": 1487.0,
+    "tn": 9713.0,
+    "fn": 588.0,
+    "recall": 0.9753655368888516,
+    "precision": 0.9399628552971576,
+    "fpr": 0.13276785714285713,
+    "f1_attack": 0.9573370068055185,
+    "macro_f1": 0.9304149338013453,
+    "accuracy": 0.9408309333029171,
+    "zero_division": 0.0
+  },
+  "tags": {
+    "mlflow.user": "maria",
+    "mlflow.source.name": "src/run_experiments.py",
+    "mlflow.source.type": "LOCAL",
+    "mlflow.source.git.commit": "393677dafccec7d50775c552e183d23e2d8172a4",
+    "mlflow.source.git.branch": "main",
+    "mlflow.source.git.repoURL": "https://github.com/Mari4Z/Tallercito.git",
+    "mlflow.runName": "E0_lr_base",
+    "experiment_id": "E0_lr_base",
+    "family": "logistic_regression",
+    "change": "Referencia sencilla. Regresión logística con log1p + estandarización de numéricas y one-hot de categóricas.",
+    "hypothesis": "Un modelo lineal ya separa bien normal de ataque porque variables como sttl y ct_state_ttl son casi deterministas, pero su frontera lineal dejará errores en las familias de ataque que se parecen al tráfico normal.",
+    "git_commit": "393677dafccec7d50775c552e183d23e2d8172a4",
+    "dvc_prepared_md5": "44585757006074b4f38735eed9dd9e08.dir",
+    "dvc_raw_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "git_tag_datos": "data-v1"
+  },
+  "model": {
+    "logged_model_id": "m-02dff6f428494e4cbbed5be0cd369d89",
+    "archivo": "model.skops",
+    "bytes": 322132,
+    "sha256": "3ad8c8e1c19eb4bc2593e5bf01f8a89fc65f250337416a94542e1442cc3e2a4d"
+  }
+}
