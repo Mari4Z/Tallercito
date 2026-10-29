@@ -9,3 +9,6 @@ __pycache__/
 mlflow.db
 mlartifacts/
 mlruns/
+
+# Las evidencias en CSV sí se versionan (no son datos del dataset)
+!evidencias/*.csv
