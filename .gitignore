@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+
+# Datos: se versionan con DVC, no con Git
+*.csv
