@@ -58,7 +58,8 @@ def main():
                                "dropped_features": ",".join(e["drop_features"]) or "none",
                                "train_rows": len(train), "valid_rows": len(valid)})
             mlflow.log_metrics({k: float(v) for k, v in m.items()})
-            mlflow.sklearn.log_model(pipe, name="model")
+            # modelo propio: se declara confiable solo el tipo interno de los árboles (skops lo bloquea por defecto)
+            mlflow.sklearn.log_model(pipe, name="model", skops_trusted_types=["sklearn.tree._tree.Tree"])
             with tempfile.TemporaryDirectory() as d:
                 p = Path(d) / "valid_scores.csv"
                 pd.DataFrame({"row_id": valid.row_id, "y_true": valid[DATA["target"]], "score_attack": score}).to_csv(p, index=False)
