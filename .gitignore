@@ -4,3 +4,8 @@ __pycache__/
 
 # Datos: se versionan con DVC, no con Git
 *.csv
+
+# MLflow local (se exporta a evidencias/mlflow/)
+mlflow.db
+mlartifacts/
+mlruns/

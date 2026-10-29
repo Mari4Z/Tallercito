@@ -1,0 +1,46 @@
+# Cuatro+ configuraciones, dos familias (regresión logística y bosques aleatorios).
+# Las hipótesis se escriben ANTES de entrenar. Mismas particiones (configs/data.yaml, semilla 42).
+# Umbral de referencia para comparar experimentos: 0.5 (el umbral final se elige después, solo con validación).
+seed: 42
+threshold: 0.5
+experiments:
+  - id: E0_lr_base
+    family: logistic_regression
+    change: Referencia sencilla. Regresión logística con log1p + estandarización de numéricas y one-hot de categóricas.
+    hypothesis: >
+      Un modelo lineal ya separa bien normal de ataque porque variables como sttl y ct_state_ttl son casi
+      deterministas, pero su frontera lineal dejará errores en las familias de ataque que se parecen al tráfico normal.
+    model: {type: LogisticRegression, params: {C: 1.0, max_iter: 2000}}
+    drop_features: []
+  - id: E1_lr_balanced
+    family: logistic_regression
+    change: Solo cambia class_weight a "balanced" respecto a E0.
+    hypothesis: >
+      Equilibrar las clases subirá el recall de ataque y también la tasa de falsos positivos (se acepta más falsa alarma
+      por detectar más ataques). El macro-F1 cambiará poco porque el desbalance es moderado (32 % normal / 68 % ataque).
+    model: {type: LogisticRegression, params: {C: 1.0, max_iter: 2000, class_weight: balanced}}
+    drop_features: []
+  - id: E2_rf_200
+    family: random_forest
+    change: Cambia de familia respecto a E0. Bosque aleatorio de 200 árboles sin límite de profundidad.
+    hypothesis: >
+      Un modelo de árboles mejorará recall y macro-F1 frente a E0, porque captura relaciones no lineales y no sufre
+      por las colas pesadas de las variables. Más complejidad debería ayudar.
+    model: {type: RandomForestClassifier, params: {n_estimators: 200, n_jobs: -1}}
+    drop_features: []
+  - id: E3_rf_shallow
+    family: random_forest
+    change: Solo limita la complejidad respecto a E2 (max_depth=6, min_samples_leaf=20).
+    hypothesis: >
+      Un bosque mucho más simple perderá poco (menos de un punto de macro-F1) frente a E2, porque pocas variables
+      casi deterministas hacen la mayor parte del trabajo. Si la pérdida es grande, la complejidad sí aporta.
+    model: {type: RandomForestClassifier, params: {n_estimators: 200, max_depth: 6, min_samples_leaf: 20, n_jobs: -1}}
+    drop_features: []
+  - id: E4_rf_no_ttl
+    family: random_forest
+    change: Igual que E2 pero sin sttl ni ct_state_ttl, las dos variables más ligadas a cómo se montó el laboratorio.
+    hypothesis: >
+      Sin esas variables el rendimiento bajará de forma visible, sobre todo el recall o la tasa de falsos positivos,
+      lo que mostraría cuánto del resultado depende de un rasgo del laboratorio y no del comportamiento del ataque.
+    model: {type: RandomForestClassifier, params: {n_estimators: 200, n_jobs: -1}}
+    drop_features: [sttl, ct_state_ttl]
