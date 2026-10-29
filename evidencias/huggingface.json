@@ -27,7 +27,7 @@
     }
   },
   "model_card_con_test": {
-    "commit_sha_hf": "1220b090265c10c06d052f79bbdf0348a9290e25",
-    "nota": "Solo cambia README.md; model.skops idéntico al de la revisión evaluada."
+    "commit_sha_hf": "246ca76bf2cf1df0fa0e6eb17170ebbb0e303ff7",
+    "nota": "Solo cambia README.md (resultado en test y comparación con v1); model.skops idéntico al de la revisión evaluada."
   }
 }
