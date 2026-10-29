@@ -17,6 +17,8 @@ from modeling import CATEGORICAL, build_pipeline, classification_metrics  # noqa
 DATA = yaml.safe_load(Path("configs/data.yaml").read_text())
 EXP = yaml.safe_load(Path("configs/experiments.yaml").read_text())
 MLFLOW_URI = "sqlite:///mlflow.db"
+# modelos propios: se declaran confiables solo los tipos internos de árboles (skops los bloquea por defecto)
+TRUSTED_TYPES = ["sklearn.tree._tree.Tree", "sklearn.ensemble._hist_gradient_boosting.predictor.TreePredictor"]
 NON_FEATURES = ["row_id", "group_id", "attack_cat", DATA["target"]]
 
 
@@ -57,8 +59,7 @@ def main():
                                "dropped_features": ",".join(e["drop_features"]) or "none",
                                "train_rows": len(train), "valid_rows": len(valid)})
             mlflow.log_metrics({k: float(v) for k, v in m.items()})
-            # modelo propio: se declara confiable solo el tipo interno de los árboles (skops lo bloquea por defecto)
-            mlflow.sklearn.log_model(pipe, name="model", skops_trusted_types=["sklearn.tree._tree.Tree"])
+            mlflow.sklearn.log_model(pipe, name="model", skops_trusted_types=TRUSTED_TYPES)
             with tempfile.TemporaryDirectory() as d:
                 p = Path(d) / "valid_scores.csv"
                 pd.DataFrame({"row_id": valid.row_id, "y_true": valid[DATA["target"]], "score_attack": score}).to_csv(p, index=False)
