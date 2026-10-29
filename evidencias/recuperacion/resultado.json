@@ -1,0 +1,56 @@
+{
+  "datos": {
+    "data/raw/UNSW_NB15_training-set.csv": {
+      "sha256": "bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa",
+      "coincide_con_auditoria": true
+    },
+    "data/raw/UNSW_NB15_testing-set.csv": {
+      "sha256": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+      "coincide_con_auditoria": true
+    },
+    "data/prepared/train.csv": {
+      "sha256": "09850917d20edfa7f94367f9f2a022fb65791b41e6de7318033035cb22ac8602",
+      "coincide_con_auditoria": true
+    },
+    "data/prepared/valid.csv": {
+      "sha256": "95628f946ef77a6624b12bc58e79d36aa55001b082c0e487b7abf58be27adf52",
+      "coincide_con_auditoria": true
+    }
+  },
+  "versiones": {
+    "v1": {
+      "hf_commit_sha": "308d2e786ae572a28a53dbe5910d6afd254d7445",
+      "umbral": 0.5,
+      "model_sha256_descargado": "76d6c306f707cc952e5e82a1dbb5942c0fb3e75c2b28dd00a034fb91ea44ca52",
+      "filas": 50,
+      "max_dif_abs_score_attack": 1.1102230246251565e-16,
+      "tolerancia": 1e-09,
+      "y_pred_identicos": true,
+      "row_id_identicos": true,
+      "coincide": true,
+      "sha256_salidas_originales": "39a4eefcd92493b4d37a022fcaaafa8c96ebb0e9c8f5c5e4217bf859c54978f9",
+      "sha256_salidas_recuperadas": "39a4eefcd92493b4d37a022fcaaafa8c96ebb0e9c8f5c5e4217bf859c54978f9",
+      "n_ataque_predichos": 38
+    },
+    "v2": {
+      "hf_commit_sha": "53384879be28769b7ac007ea96ef1e53f9e48271",
+      "umbral": 0.65,
+      "model_sha256_descargado": "544c94bdd84c124145588960ca25ad24f6dc4f32a137bfb0148fbf933dd711bd",
+      "filas": 50,
+      "max_dif_abs_score_attack": 1.1102230246251565e-16,
+      "tolerancia": 1e-09,
+      "y_pred_identicos": true,
+      "row_id_identicos": true,
+      "coincide": true,
+      "sha256_salidas_originales": "ec8f9b2c28def6d06e98e3e53a66638097d4d0fdac7b7c442a685b22d8224416",
+      "sha256_salidas_recuperadas": "ec8f9b2c28def6d06e98e3e53a66638097d4d0fdac7b7c442a685b22d8224416",
+      "n_ataque_predichos": 36
+    }
+  },
+  "entrada": {
+    "sha256": "ce371ec6968a37cbf3adb7d7def6433a85e3ce40381707b9789e7943483e1fc3",
+    "filas": 50,
+    "igual_a_muestra_reconstruida_desde_datos_DVC": true
+  },
+  "resultado_global": "OK"
+}
