@@ -1,4 +1,6 @@
 [core]
-    remote = origin
-['remote "origin"']
+    remote = hf
+['remote "hf"']
+    url = https://huggingface.co/datasets/Mari4Z/unsw-nb15-dvc-storage/resolve/main
+['remote "dagshub"']
     url = https://dagshub.com/Mari4Z/Tallercito.dvc
