@@ -1,0 +1,55 @@
+{
+  "run_id": "5892811f742340659a3b88199cd2ec23",
+  "run_name": "E1_logreg",
+  "status": "FINISHED",
+  "start_time_ms": 1793303316394,
+  "artifact_uri": "/Users/maria/Documents/code/Tallercito/mlruns/2/5892811f742340659a3b88199cd2ec23/artifacts",
+  "params": {
+    "model": "LogisticRegression",
+    "clf_C": "1.0",
+    "clf_max_iter": "2000",
+    "seed": "42",
+    "split_seed": "42",
+    "n_features": "42",
+    "dropped_features": "none",
+    "train_rows": "140272",
+    "valid_rows": "35069"
+  },
+  "metrics": {
+    "threshold": 0.5,
+    "tp": 23279.0,
+    "fp": 1485.0,
+    "tn": 9715.0,
+    "fn": 590.0,
+    "recall": 0.9752817461979975,
+    "precision": 0.9400339202067517,
+    "fpr": 0.13258928571428572,
+    "f1_attack": 0.957333497830691,
+    "macro_f1": 0.9304221546349456,
+    "accuracy": 0.9408309333029171,
+    "zero_division": 0.0
+  },
+  "tags": {
+    "mlflow.user": "maria",
+    "mlflow.source.name": "src/run_experiments.py",
+    "mlflow.source.type": "LOCAL",
+    "mlflow.source.git.commit": "846fecafedb143276d6f5bf384ec3bb3279cb906",
+    "mlflow.source.git.branch": "main",
+    "mlflow.source.git.repoURL": "https://github.com/Mari4Z/Tallercito.git",
+    "mlflow.runName": "E1_logreg",
+    "experiment_id": "E1_logreg",
+    "family": "logistic_regression",
+    "change": "Referencia sencilla. Regresión logística con log1p + estandarización de numéricas y one-hot de categóricas.",
+    "hypothesis": "Un modelo lineal ya separa bien normal de ataque porque variables como sttl y ct_state_ttl son casi deterministas, pero su frontera lineal dejará muchas falsas alarmas (FPR por encima de 0.10) frente a los modelos de árboles.",
+    "git_commit": "846fecafedb143276d6f5bf384ec3bb3279cb906",
+    "dvc_prepared_md5": "44585757006074b4f38735eed9dd9e08.dir",
+    "dvc_raw_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "git_tag_datos": "data-v1"
+  },
+  "model": {
+    "logged_model_id": "m-3e2eac82d92b4029883f4f7d4b769dbd",
+    "archivo": "model.skops",
+    "bytes": 322133,
+    "sha256": "76d6c306f707cc952e5e82a1dbb5942c0fb3e75c2b28dd00a034fb91ea44ca52"
+  }
+}

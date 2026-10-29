@@ -36,7 +36,7 @@ for r in sorted(client.search_runs([exp.experiment_id], filter_string="attribute
         src = Path(lm.artifact_location.replace("file://", ""))
         (d / "model_metadata").mkdir()
         for f in src.iterdir():
-            if f.is_file() and f.stat().st_size < 1_000_000:
+            if f.is_file() and not f.name.startswith("model."):
                 shutil.copy(f, d / "model_metadata" / f.name)
         weights = next(src.glob("model.*"))
         info = json.loads((d / "run.json").read_text())

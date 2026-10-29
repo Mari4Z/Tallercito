@@ -1,4 +1,4 @@
-artifact_path: /Users/maria/Documents/code/Tallercito/mlruns/1/models/m-1662050e6b844c0eb0db56867ae5dc1d/artifacts
+artifact_path: /Users/maria/Documents/code/Tallercito/mlruns/2/models/m-5c7a9a6db0d244d4bf6c244e98842dd1/artifacts
 flavors:
   python_function:
     env:
@@ -15,10 +15,11 @@ flavors:
     sklearn_version: 1.9.1
     skops_trusted_types:
     - sklearn.tree._tree.Tree
+    - sklearn.ensemble._hist_gradient_boosting.predictor.TreePredictor
 mlflow_version: 3.17.2
-model_id: m-1662050e6b844c0eb0db56867ae5dc1d
-model_size_bytes: 189406723
-model_uuid: m-1662050e6b844c0eb0db56867ae5dc1d
+model_id: m-5c7a9a6db0d244d4bf6c244e98842dd1
+model_size_bytes: 245998
+model_uuid: m-5c7a9a6db0d244d4bf6c244e98842dd1
 prompts: null
-run_id: a45f24b242274ec3a021e3ee907de156
-utc_time_created: '2026-10-29 19:37:03.642052'
+run_id: 1c550e93161540ba8ca3669f99961c59
+utc_time_created: '2026-10-29 19:48:34.107780'

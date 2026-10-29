@@ -1,0 +1,13 @@
+# Conclusiones de validación, escritas después de ver los resultados (umbral 0.5, misma partición para todos).
+E0_dummy: >
+  Hipótesis confirmada. Predice siempre ataque: recall 1.000, FPR 1.000, accuracy 0.681 y macro-F1 0.405.
+  Una accuracy de 0.68 sin hacer nada muestra por qué no basta como métrica.
+E1_logreg: >
+  Hipótesis confirmada. Detecta casi todos los ataques (recall 0.975) pero alarma al 13.3 % del tráfico normal
+  (FPR 0.133, por encima del 0.10 previsto). Macro-F1 0.930.
+E2_hgb: >
+  Hipótesis confirmada. Mejor macro-F1 de los cuatro (0.950) y FPR de 0.083, menor que la regresión logística
+  (0.133), con recall igual (0.975). Es el modelo guardado más liviano entre los de árboles.
+E3_rf: >
+  Hipótesis confirmada. Macro-F1 0.945, medio punto por debajo del boosting (0.950). Tiene más recall (0.981)
+  pero más falsas alarmas (FPR 0.106 vs 0.083). Su modelo guardado pesa mucho más que el del boosting.

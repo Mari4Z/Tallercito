@@ -1,0 +1,54 @@
+{
+  "run_id": "1c550e93161540ba8ca3669f99961c59",
+  "run_name": "E0_dummy",
+  "status": "FINISHED",
+  "start_time_ms": 1793303313825,
+  "artifact_uri": "/Users/maria/Documents/code/Tallercito/mlruns/2/1c550e93161540ba8ca3669f99961c59/artifacts",
+  "params": {
+    "model": "DummyClassifier",
+    "clf_strategy": "prior",
+    "seed": "42",
+    "split_seed": "42",
+    "n_features": "42",
+    "dropped_features": "none",
+    "train_rows": "140272",
+    "valid_rows": "35069"
+  },
+  "metrics": {
+    "threshold": 0.5,
+    "tp": 23869.0,
+    "fp": 11200.0,
+    "tn": 0.0,
+    "fn": 0.0,
+    "recall": 1.0,
+    "precision": 0.6806296159000826,
+    "fpr": 1.0,
+    "f1_attack": 0.8099697987715905,
+    "macro_f1": 0.40498489938579524,
+    "accuracy": 0.6806296159000826,
+    "zero_division": 0.0
+  },
+  "tags": {
+    "mlflow.user": "maria",
+    "mlflow.source.name": "src/run_experiments.py",
+    "mlflow.source.type": "LOCAL",
+    "mlflow.source.git.commit": "846fecafedb143276d6f5bf384ec3bb3279cb906",
+    "mlflow.source.git.branch": "main",
+    "mlflow.source.git.repoURL": "https://github.com/Mari4Z/Tallercito.git",
+    "mlflow.runName": "E0_dummy",
+    "experiment_id": "E0_dummy",
+    "family": "baseline",
+    "change": "Piso de comparación. DummyClassifier (strategy=prior) ignora las variables y predice la frecuencia de clase.",
+    "hypothesis": "Predice siempre ataque (68 % de las filas son ataque), así que tendrá recall 1.0 y FPR 1.0 con una accuracy cercana a 0.68 pero un macro-F1 muy bajo. Sirve para mostrar que la accuracy sola engaña.",
+    "git_commit": "846fecafedb143276d6f5bf384ec3bb3279cb906",
+    "dvc_prepared_md5": "44585757006074b4f38735eed9dd9e08.dir",
+    "dvc_raw_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "git_tag_datos": "data-v1"
+  },
+  "model": {
+    "logged_model_id": "m-5c7a9a6db0d244d4bf6c244e98842dd1",
+    "archivo": "model.skops",
+    "bytes": 245998,
+    "sha256": "ddac015929d3fe046e59245f825f29a3caaaa49f836aca76458ad6387be01c1c"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "run_id": "7a99e96ec0594d15b958b820aae0332f",
+  "run_name": "E3_rf",
+  "status": "FINISHED",
+  "start_time_ms": 1793303335320,
+  "artifact_uri": "/Users/maria/Documents/code/Tallercito/mlruns/2/7a99e96ec0594d15b958b820aae0332f/artifacts",
+  "params": {
+    "model": "RandomForestClassifier",
+    "clf_n_estimators": "100",
+    "clf_min_samples_leaf": "5",
+    "clf_n_jobs": "-1",
+    "seed": "42",
+    "split_seed": "42",
+    "n_features": "42",
+    "dropped_features": "none",
+    "train_rows": "140272",
+    "valid_rows": "35069"
+  },
+  "metrics": {
+    "threshold": 0.5,
+    "tp": 23403.0,
+    "fp": 1189.0,
+    "tn": 10011.0,
+    "fn": 466.0,
+    "recall": 0.9804767690309607,
+    "precision": 0.9516509433962265,
+    "fpr": 0.10616071428571429,
+    "f1_attack": 0.9658488268917275,
+    "macro_f1": 0.9447503118635414,
+    "accuracy": 0.952807322706664,
+    "zero_division": 0.0
+  },
+  "tags": {
+    "mlflow.user": "maria",
+    "mlflow.source.name": "src/run_experiments.py",
+    "mlflow.source.type": "LOCAL",
+    "mlflow.source.git.commit": "846fecafedb143276d6f5bf384ec3bb3279cb906",
+    "mlflow.source.git.branch": "main",
+    "mlflow.source.git.repoURL": "https://github.com/Mari4Z/Tallercito.git",
+    "mlflow.runName": "E3_rf",
+    "experiment_id": "E3_rf",
+    "family": "random_forest",
+    "change": "Cambia de familia respecto a E1. Random forest de 100 árboles con min_samples_leaf=5 para limitar el tamaño.",
+    "hypothesis": "Rendirá cerca del boosting (diferencia de macro-F1 menor de un punto), aunque su modelo guardado será mucho más pesado que el de HistGradientBoosting. En la primera ronda un bosque de 200 árboles sin límite llegó a macro-F1 0.948; limitar las hojas debería costar poco.",
+    "git_commit": "846fecafedb143276d6f5bf384ec3bb3279cb906",
+    "dvc_prepared_md5": "44585757006074b4f38735eed9dd9e08.dir",
+    "dvc_raw_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "git_tag_datos": "data-v1"
+  },
+  "model": {
+    "logged_model_id": "m-e2acf3a4b2064b57a6216d1750566eb9",
+    "archivo": "model.skops",
+    "bytes": 28828255,
+    "sha256": "50b8f631e20ffbaac25e99d56648eb324af7e5e7dd556941506c7effa927211e"
+  }
+}
