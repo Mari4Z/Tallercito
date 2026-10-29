@@ -1,0 +1,232 @@
+{
+  "experimento": "E2_hgb",
+  "run_id": "09cf945f4cc14571a1e6ec7eb84c75b7",
+  "datos": "solo validación (data/prepared/valid.csv)",
+  "regla": "umbral mínimo con FPR <= 0.05 en validación (maximiza recall bajo un presupuesto de falsas alarmas)",
+  "razon": "Un ataque ignorado es más costoso que una falsa alarma, pero un FPR alto satura al equipo de seguridad. Se acepta como máximo 1 falsa alarma por cada 20 conexiones normales.",
+  "umbral_elegido": 0.65,
+  "metricas_validacion_en_umbral_elegido": {
+    "recall": 0.9532,
+    "precision": 0.9766,
+    "fpr": 0.0487,
+    "macro_f1": 0.9462,
+    "tp": 22752.0,
+    "fp": 545.0,
+    "tn": 10655.0,
+    "fn": 1117.0
+  },
+  "referencia_umbral_0.5": {
+    "recall": 0.9754,
+    "precision": 0.9615,
+    "fpr": 0.0832,
+    "macro_f1": 0.9498,
+    "tp": 23282.0,
+    "fp": 932.0,
+    "tn": 10268.0,
+    "fn": 587.0
+  },
+  "referencia_umbral_max_macro_f1": {
+    "umbral": 0.52,
+    "recall": 0.9726,
+    "precision": 0.9646,
+    "fpr": 0.0761,
+    "macro_f1": 0.9503,
+    "tp": 23214.0,
+    "fp": 852.0,
+    "tn": 10348.0,
+    "fn": 655.0
+  },
+  "curva_validacion": {
+    "0.05": {
+      "recall": 1.0,
+      "precision": 0.9147,
+      "fpr": 0.1988,
+      "macro_f1": 0.9225,
+      "tp": 23868.0,
+      "fp": 2226.0,
+      "tn": 8974.0,
+      "fn": 1.0
+    },
+    "0.1": {
+      "recall": 0.9999,
+      "precision": 0.916,
+      "fpr": 0.1954,
+      "macro_f1": 0.9239,
+      "tp": 23866.0,
+      "fp": 2188.0,
+      "tn": 9012.0,
+      "fn": 3.0
+    },
+    "0.15": {
+      "recall": 0.9997,
+      "precision": 0.9176,
+      "fpr": 0.1913,
+      "macro_f1": 0.9254,
+      "tp": 23861.0,
+      "fp": 2142.0,
+      "tn": 9058.0,
+      "fn": 8.0
+    },
+    "0.2": {
+      "recall": 0.9992,
+      "precision": 0.922,
+      "fpr": 0.1802,
+      "macro_f1": 0.9296,
+      "tp": 23851.0,
+      "fp": 2018.0,
+      "tn": 9182.0,
+      "fn": 18.0
+    },
+    "0.25": {
+      "recall": 0.998,
+      "precision": 0.9274,
+      "fpr": 0.1664,
+      "macro_f1": 0.9343,
+      "tp": 23822.0,
+      "fp": 1864.0,
+      "tn": 9336.0,
+      "fn": 47.0
+    },
+    "0.3": {
+      "recall": 0.9958,
+      "precision": 0.9339,
+      "fpr": 0.1502,
+      "macro_f1": 0.9391,
+      "tp": 23768.0,
+      "fp": 1682.0,
+      "tn": 9518.0,
+      "fn": 101.0
+    },
+    "0.35": {
+      "recall": 0.9922,
+      "precision": 0.9407,
+      "fpr": 0.1333,
+      "macro_f1": 0.9431,
+      "tp": 23684.0,
+      "fp": 1493.0,
+      "tn": 9707.0,
+      "fn": 185.0
+    },
+    "0.4": {
+      "recall": 0.9879,
+      "precision": 0.9482,
+      "fpr": 0.115,
+      "macro_f1": 0.9469,
+      "tp": 23579.0,
+      "fp": 1288.0,
+      "tn": 9912.0,
+      "fn": 290.0
+    },
+    "0.45": {
+      "recall": 0.9821,
+      "precision": 0.9546,
+      "fpr": 0.0995,
+      "macro_f1": 0.9486,
+      "tp": 23442.0,
+      "fp": 1114.0,
+      "tn": 10086.0,
+      "fn": 427.0
+    },
+    "0.5": {
+      "recall": 0.9754,
+      "precision": 0.9615,
+      "fpr": 0.0832,
+      "macro_f1": 0.9498,
+      "tp": 23282.0,
+      "fp": 932.0,
+      "tn": 10268.0,
+      "fn": 587.0
+    },
+    "0.55": {
+      "recall": 0.9677,
+      "precision": 0.9673,
+      "fpr": 0.0696,
+      "macro_f1": 0.9491,
+      "tp": 23098.0,
+      "fp": 780.0,
+      "tn": 10420.0,
+      "fn": 771.0
+    },
+    "0.6": {
+      "recall": 0.96,
+      "precision": 0.9725,
+      "fpr": 0.0578,
+      "macro_f1": 0.9478,
+      "tp": 22914.0,
+      "fp": 647.0,
+      "tn": 10553.0,
+      "fn": 955.0
+    },
+    "0.65": {
+      "recall": 0.9532,
+      "precision": 0.9766,
+      "fpr": 0.0487,
+      "macro_f1": 0.9462,
+      "tp": 22752.0,
+      "fp": 545.0,
+      "tn": 10655.0,
+      "fn": 1117.0
+    },
+    "0.7": {
+      "recall": 0.9434,
+      "precision": 0.9809,
+      "fpr": 0.0391,
+      "macro_f1": 0.9426,
+      "tp": 22519.0,
+      "fp": 438.0,
+      "tn": 10762.0,
+      "fn": 1350.0
+    },
+    "0.75": {
+      "recall": 0.9259,
+      "precision": 0.9859,
+      "fpr": 0.0281,
+      "macro_f1": 0.9338,
+      "tp": 22100.0,
+      "fp": 315.0,
+      "tn": 10885.0,
+      "fn": 1769.0
+    },
+    "0.8": {
+      "recall": 0.9121,
+      "precision": 0.9891,
+      "fpr": 0.0215,
+      "macro_f1": 0.9263,
+      "tp": 21772.0,
+      "fp": 241.0,
+      "tn": 10959.0,
+      "fn": 2097.0
+    },
+    "0.85": {
+      "recall": 0.8966,
+      "precision": 0.9925,
+      "fpr": 0.0144,
+      "macro_f1": 0.9179,
+      "tp": 21401.0,
+      "fp": 161.0,
+      "tn": 11039.0,
+      "fn": 2468.0
+    },
+    "0.9": {
+      "recall": 0.8774,
+      "precision": 0.9953,
+      "fpr": 0.0088,
+      "macro_f1": 0.9063,
+      "tp": 20942.0,
+      "fp": 99.0,
+      "tn": 11101.0,
+      "fn": 2927.0
+    },
+    "0.95": {
+      "recall": 0.8454,
+      "precision": 0.9981,
+      "fpr": 0.0034,
+      "macro_f1": 0.8862,
+      "tp": 20180.0,
+      "fp": 38.0,
+      "tn": 11162.0,
+      "fn": 3689.0
+    }
+  },
+  "nota": "El umbral se ajusta sobre la misma validación con la que se reportan sus métricas, por lo que estas son algo optimistas."
+}
