@@ -1,0 +1,40 @@
+{
+  "version_elegida": "v2",
+  "experimento": "E2_hgb",
+  "run_id_mlflow": "09cf945f4cc14571a1e6ec7eb84c75b7",
+  "repositorio_modelos": "Mari4Z/unsw-nb15-defiende-el-servidor",
+  "hf_commit_sha_completo": "53384879be28769b7ac007ea96ef1e53f9e48271",
+  "hf_tag": "v2",
+  "git_commit_codigo_que_entreno": "846fecafedb143276d6f5bf384ec3bb3279cb906",
+  "referencia_dvc_datos_preparados": "44585757006074b4f38735eed9dd9e08.dir",
+  "tag_git_datos": "data-v1",
+  "hash_modelo_sha256": "544c94bdd84c124145588960ca25ad24f6dc4f32a137bfb0148fbf933dd711bd",
+  "umbral": 0.65,
+  "clase_positiva": "1 = ataque",
+  "razon_de_seleccion": {
+    "modelo": "HistGradientBoosting obtuvo el mejor macro-F1 de validación (0.9498 vs 0.9304 de la regresión logística y 0.9448 del random forest) y la FPR más baja (0.0832 vs 0.1326 y 0.1062) con un modelo de 2 MB.",
+    "umbral": "Un ataque ignorado es más costoso que una falsa alarma, pero un FPR alto satura al equipo de seguridad. Se acepta como máximo 1 falsa alarma por cada 20 conexiones normales. Regla: umbral mínimo con FPR <= 0.05 en validación (maximiza recall bajo un presupuesto de falsas alarmas). Umbral 0.65 en validación: recall 0.9532, FPR 0.0487, macro-F1 0.9462.",
+    "alternativas_descartadas": "v1 (regresión logística, umbral 0.5) queda como referencia; no se evalúa en test."
+  },
+  "metricas_validacion_v2": {
+    "recall": 0.9532,
+    "precision": 0.9766,
+    "fpr": 0.0487,
+    "macro_f1": 0.9462,
+    "tp": 22752.0,
+    "fp": 545.0,
+    "tn": 10655.0,
+    "fn": 1117.0
+  },
+  "metricas_validacion_v1": {
+    "recall": "0.9753",
+    "precision": "0.94",
+    "fpr": "0.1326",
+    "macro_f1": "0.9304"
+  },
+  "evidencia_de_congelacion_previa_al_test": {
+    "commit_umbral_congelado": "1667e8d (Freeze alert threshold for HistGradientBoosting using validation only (0.65)), 2026-10-29 14:51:24 -0500",
+    "como_verificar": "git log --format='%h %ad %s' --date=iso -- evidencias/umbral.json evidencias/seleccion.json; ambos commits son anteriores a evidencias/metricas-test.json y evidencias/predicciones-test.csv",
+    "test_usado_para_elegir": false
+  }
+}

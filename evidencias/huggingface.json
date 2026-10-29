@@ -1,0 +1,28 @@
+{
+  "repo": "Mari4Z/unsw-nb15-defiende-el-servidor",
+  "url": "https://huggingface.co/Mari4Z/unsw-nb15-defiende-el-servidor",
+  "versiones": {
+    "v1": {
+      "experimento": "E1_logreg",
+      "run_id": "5892811f742340659a3b88199cd2ec23",
+      "umbral": 0.5,
+      "commit_sha_hf": "308d2e786ae572a28a53dbe5910d6afd254d7445",
+      "tag": "v1",
+      "model_sha256": "76d6c306f707cc952e5e82a1dbb5942c0fb3e75c2b28dd00a034fb91ea44ca52",
+      "git_commit_codigo": "846fecafedb143276d6f5bf384ec3bb3279cb906",
+      "dvc_prepared_md5": "44585757006074b4f38735eed9dd9e08.dir",
+      "preflight_max_diff_scores": 1.1102230246251565e-16
+    },
+    "v2": {
+      "experimento": "E2_hgb",
+      "run_id": "09cf945f4cc14571a1e6ec7eb84c75b7",
+      "umbral": 0.65,
+      "commit_sha_hf": "53384879be28769b7ac007ea96ef1e53f9e48271",
+      "tag": "v2",
+      "model_sha256": "544c94bdd84c124145588960ca25ad24f6dc4f32a137bfb0148fbf933dd711bd",
+      "git_commit_codigo": "846fecafedb143276d6f5bf384ec3bb3279cb906",
+      "dvc_prepared_md5": "44585757006074b4f38735eed9dd9e08.dir",
+      "preflight_max_diff_scores": 1.1102230246251565e-16
+    }
+  }
+}
