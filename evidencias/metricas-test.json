@@ -1,0 +1,28 @@
+{
+  "version": "v2",
+  "hf_repo": "Mari4Z/unsw-nb15-defiende-el-servidor",
+  "hf_commit_sha": "53384879be28769b7ac007ea96ef1e53f9e48271",
+  "hash_modelo_sha256": "544c94bdd84c124145588960ca25ad24f6dc4f32a137bfb0148fbf933dd711bd",
+  "hash_dataset_test_sha256": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+  "filas_evaluadas": 82332,
+  "umbral": 0.65,
+  "regla_de_umbral": "y_pred = 1 si score_attack >= umbral",
+  "clase_positiva": "1 = ataque",
+  "matriz_de_confusion": {
+    "tn": 30536,
+    "fp": 6464,
+    "fn": 1573,
+    "tp": 43759
+  },
+  "metricas": {
+    "recall": 0.9653004500132357,
+    "precision": 0.8712940286323,
+    "fpr": 0.1747027027027027,
+    "f1_attack": 0.915891371461462,
+    "macro_f1": 0.8997984111355264,
+    "accuracy": 0.9023830345430696,
+    "zero_division": false
+  },
+  "politica_denominador_cero": "se devuelve 0.0 y zero_division=true",
+  "cruce_con_train_valid": "ver evidencias/auditoria.json (cruces_entre_particiones)"
+}
